@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "fastapi-project"
+version = "0.1.0"
+description = "A FastAPI project using Python 3.11.2"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "3.11.2"
+fastapi = "^0.78.0"
+uvicorn = { version = "^0.18.0", extras = ["standard"] }
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.950"
+isort = "^5.10.1"
+black = "^22.3.0"
+flake8 = "^4.0.1"
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.mypy]
+python_version = 3.11
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 120
+ignore = ["E203", "E266", "E501", "W503"]
+max-complexity = 18
+select = ["B", "C", "E", "F", "W", "T4", "B9"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
